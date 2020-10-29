@@ -25,10 +25,38 @@ sudo pishrink rpi-27-10-20.img rpi-vw-27-10-20.img
 
 Write the image back with the raspberry pi cloner
 
+## nginx with rtmp
+
+Basic proof-of-concept config with no security is
+```
+rtmp {
+     server {
+     	    listen 1935;
+	    chunk_size 4096;
+
+	    application live {
+	    		live on;
+			record off;
+	    }
+     }
+}
+```
 
 ## Setting up mplayer to show rtmp stream on hdmi at boot
 
 mplayer will not run properly with elevated privileges, so set user to ubuntu in the service file
+
+```
+[Unit]
+Description=play video from rtmp
+After=network.target
+[Service]
+ExecStart=/usr/local/bin/mplayer.sh
+User=ubuntu
+
+[Install]
+WantedBy=multi-user.target
+```
 
 ensure hdmi is plugged in before boot
 
