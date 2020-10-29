@@ -26,3 +26,13 @@ sudo pishrink rpi-27-10-20.img rpi-vw-27-10-20.img
 Write the image back with the raspberry pi cloner
 
 
+## Setting up mplayer to run on boot
+
+mplayer will not run properly with elevated privileges, so set user to ubuntu in the service file
+
+To test the streaming of rtmp to hdmi, you can use an mp4 clip and stream it from another machine
+```
+wget https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_1920_18MG.mp4
+ffmpeg -re -i file_example_MP4_1920_18MG.mp4 -f flv  rtmp://<your-pi-ip>/live/video
+```
+
