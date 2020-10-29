@@ -91,4 +91,18 @@ To test the streaming of rtmp to hdmi, you can use an mp4 clip and stream it fro
 wget https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_1920_18MG.mp4
 ffmpeg -re -i file_example_MP4_1920_18MG.mp4 -f flv  rtmp://<your-pi-ip>/live/video
 ```
+## cursor during fullscreen
 
+set up rc-local service, and enable as per these [instructions](https://www.linuxbabe.com/linux-server/how-to-enable-etcrc-local-with-systemd)
+
+Then add [this](https://jurta.org/en/prog/noblink) script to rc-local
+
+```/etc/rc-local``` 
+
+```
+#!/bin/bash
+echo 0 > /sys/class/graphics/fbcon/cursor_blink
+  for i in $(seq 1 8); do
+    TERM=linux setterm --foreground white --bold on -store > /dev/tty$i
+  done
+```
