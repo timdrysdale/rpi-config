@@ -106,3 +106,13 @@ echo 0 > /sys/class/graphics/fbcon/cursor_blink
     TERM=linux setterm --foreground white --bold on -store > /dev/tty$i
   done
 ```
+
+## For identifying a RPi for the first time ...
+
+    sudo apt install alsa-utils
+    speaker-test -t wav -c 2
+    
+    
+    
+    
+    
