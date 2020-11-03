@@ -116,6 +116,7 @@ echo 0 > /sys/class/graphics/fbcon/cursor_blink
 
 Change camera id
 
+    ls /dev/v4l/by-id
     sudo emacs /usr/local/bin/ffmpeg-camera
 
 Change routing
