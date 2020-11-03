@@ -112,7 +112,19 @@ echo 0 > /sys/class/graphics/fbcon/cursor_blink
     sudo apt install alsa-utils
     speaker-test -t wav -c 2
     
+## Key editing steps
+
+Change camera id
+
+    sudo emacs /usr/local/bin/ffmpeg-camera
+
+Change routing
+
+    sudo emacs /usr/local/bin/vw-rules
     
-    
+Check camera ok ...
+
+    sudo systemctl restart ffmpeg-camera
+    sudo systemctl restart vw-rules
     
     
